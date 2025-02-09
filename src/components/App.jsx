@@ -6,25 +6,29 @@ export default function AssemblyEndgame() {
   const [currentWord] = useState('react');
   const [guessedLetters, setGuessedLetters] = useState([]);
 
+  const wrongGuessCount = guessedLetters.filter(
+    letter => !currentWord.includes(letter)
+  ).length;
+
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
   function addGuessedLetter(letter) {
-    setGuessedLetters(
-      prevLetters =>
-        prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
-      // const lettersSet = new Set(prevLetters);
-      // lettersSet.add(letter);
-      // return Array.from(lettersSet);
+    setGuessedLetters(prevLetters =>
+      prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
     );
   }
 
-  const languageElems = languages.map(lang => {
+  const languageElems = languages.map((lang, index) => {
+    const isLanguageLost = index < wrongGuessCount;
+
     const styles = {
       backgroundColor: lang.backgroundColor,
       color: lang.color,
     };
+    const className = clsx('chip', isLanguageLost && 'lost');
+
     return (
-      <span className="chip" style={styles} key={lang.name}>
+      <span className={className} style={styles} key={lang.name}>
         {lang.name}
       </span>
     );
