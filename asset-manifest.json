@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/AssemblyEndgame_react/static/css/main.1309096d.css",
-    "main.js": "/AssemblyEndgame_react/static/js/main.b3584124.js",
+    "main.css": "/AssemblyEndgame_react/static/css/main.9f6b47be.css",
+    "main.js": "/AssemblyEndgame_react/static/js/main.d59b2e21.js",
     "index.html": "/AssemblyEndgame_react/index.html",
-    "main.1309096d.css.map": "/AssemblyEndgame_react/static/css/main.1309096d.css.map",
-    "main.b3584124.js.map": "/AssemblyEndgame_react/static/js/main.b3584124.js.map"
+    "main.9f6b47be.css.map": "/AssemblyEndgame_react/static/css/main.9f6b47be.css.map",
+    "main.d59b2e21.js.map": "/AssemblyEndgame_react/static/js/main.d59b2e21.js.map"
   },
   "entrypoints": [
-    "static/css/main.1309096d.css",
-    "static/js/main.b3584124.js"
+    "static/css/main.9f6b47be.css",
+    "static/js/main.d59b2e21.js"
   ]
 }
