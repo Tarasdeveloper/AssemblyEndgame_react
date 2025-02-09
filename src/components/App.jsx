@@ -3,7 +3,7 @@ import { languages } from 'languages';
 import { useState } from 'react';
 
 export default function AssemblyEndgame() {
-  const [currentWord, setCurrentWord] = useState('react');
+  const [currentWord] = useState('react');
   const [guessedLetters, setGuessedLetters] = useState([]);
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
