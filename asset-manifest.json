@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/AssemblyEndgame_react/static/css/main.1309096d.css",
+    "main.js": "/AssemblyEndgame_react/static/js/main.b3584124.js",
+    "index.html": "/AssemblyEndgame_react/index.html",
+    "main.1309096d.css.map": "/AssemblyEndgame_react/static/css/main.1309096d.css.map",
+    "main.b3584124.js.map": "/AssemblyEndgame_react/static/js/main.b3584124.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1309096d.css",
+    "static/js/main.b3584124.js"
+  ]
+}
