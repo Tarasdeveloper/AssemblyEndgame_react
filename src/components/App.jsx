@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { languages } from 'languages';
 import { useState } from 'react';
+import { getFarewellText } from 'utils';
 
 export default function AssemblyEndgame() {
   const [currentWord] = useState('react');
@@ -9,6 +10,15 @@ export default function AssemblyEndgame() {
   const wrongGuessCount = guessedLetters.filter(
     letter => !currentWord.includes(letter)
   ).length;
+
+  const isGameWon = currentWord
+    .split('')
+    .every(letter => guessedLetters.includes(letter));
+  const isGameLost = wrongGuessCount >= languages.length - 1;
+  const isGameOver = isGameWon || isGameLost;
+  const lastGuessedLetter = guessedLetters[guessedLetters.length - 1];
+  const isLastGuessIncorrect =
+    lastGuessedLetter && !currentWord.includes(lastGuessedLetter);
 
   const alphabet = 'abcdefghijklmnopqrstuvwxyz';
 
@@ -62,6 +72,39 @@ export default function AssemblyEndgame() {
     );
   });
 
+  const gameStatusClass = clsx('game-status', {
+    won: isGameWon,
+    lost: isGameLost,
+    farewell: !isGameOver && isLastGuessIncorrect,
+  });
+
+  function renderGameStatus() {
+    if (!isGameOver && isLastGuessIncorrect) {
+      return (
+        <p className="farewell-mesage">
+          {getFarewellText(languages[wrongGuessCount - 1].name)}
+        </p>
+      );
+    }
+    if (isGameWon) {
+      return (
+        <>
+          <h2>You win!</h2>
+          <p>Well done! 🎉</p>
+        </>
+      );
+    }
+    if (isGameLost) {
+      return (
+        <>
+          <h2>Game over!</h2>
+          <p>You lose! Better start learning Assembly 😭</p>
+        </>
+      );
+    }
+    return null;
+  }
+
   return (
     <main>
       <header>
@@ -72,10 +115,7 @@ export default function AssemblyEndgame() {
         </p>
       </header>
 
-      <section className="game-status">
-        <h2>You win!</h2>
-        <p>Well done! 🎉</p>
-      </section>
+      <section className={gameStatusClass}>{renderGameStatus()}</section>
 
       <section className="language-chips">{languageElems}</section>
 
@@ -83,7 +123,7 @@ export default function AssemblyEndgame() {
 
       <section className="keyboard">{keyboardElement}</section>
 
-      <button className="new-game">New Game</button>
+      {isGameOver && <button className="new-game">New Game</button>}
     </main>
   );
 }
