@@ -120,8 +120,8 @@ export default function AssemblyEndgame() {
 
   return (
     <main>
-      {isGameWon && <ReactConfetti />}
       <header>
+        {isGameWon && <ReactConfetti />}
         <h1>Assembly: Endgame</h1>
         <p>
           Guess the word within 8 attempts to keep the programming world safe
